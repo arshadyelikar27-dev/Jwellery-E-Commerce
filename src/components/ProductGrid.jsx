@@ -173,7 +173,7 @@ const ProductGrid = () => {
                   </Link>
 
                   <div className="product-price-row">
-                    <span className="product-price-tag">â‚¹{product.price.toLocaleString('en-IN')}</span>
+                    <span className="product-price-tag">₹{product.price.toLocaleString('en-IN')}</span>
                   </div>
 
                   {/* Mobile Quick Add Button */}
@@ -219,7 +219,7 @@ const ProductGrid = () => {
                 </div>
                 <div className="quickview-info-col">
                   <h2>{quickViewProduct.name}</h2>
-                  <div className="quickview-price">â‚¹{quickViewProduct.price.toLocaleString('en-IN')}</div>
+                  <div className="quickview-price">₹{quickViewProduct.price.toLocaleString('en-IN')}</div>
                   <p className="quickview-desc">{quickViewProduct.description}</p>
                   
                   <div className="quickview-specs">

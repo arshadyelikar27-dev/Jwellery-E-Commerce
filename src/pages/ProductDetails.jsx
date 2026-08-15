@@ -114,7 +114,7 @@ const ProductDetails = () => {
 
             <h1 className="details-title">{product.name}</h1>
             <div className="details-price-row">
-              <span className="main-price">â‚¹{product.price.toLocaleString('en-IN')}</span>
+              <span className="main-price">₹{product.price.toLocaleString('en-IN')}</span>
               <span className="tax-inclusive-tag">Includes all applicable luxury duties & taxes</span>
             </div>
           </div>
@@ -245,7 +245,7 @@ const ProductDetails = () => {
       <div className="mobile-sticky-action-bar">
         <div className="mobile-bar-price">
           <span>Total</span>
-          <strong>â‚¹{product.price.toLocaleString('en-IN')}</strong>
+          <strong>₹{product.price.toLocaleString('en-IN')}</strong>
         </div>
         <button className="btn btn-shimmer-gold mobile-bar-btn" onClick={handleAddToCart}>
           <ShoppingBag size={16} /> Add to Bag

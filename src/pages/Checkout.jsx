@@ -465,7 +465,7 @@ const Checkout = () => {
                       Delivering To:
                     </span>
                     <p style={{ fontSize: '0.9rem', fontWeight: 600, margin: '0.2rem 0' }}>
-                      {address.name} â€¢ <span style={{ color: '#c5a97d' }}>{address.countryCode} {address.phone}</span>
+                      {address.name} • <span style={{ color: '#c5a97d' }}>{address.countryCode} {address.phone}</span>
                     </p>
                     <small style={{ color: 'var(--color-text-muted)' }}>
                       {address.street}, {address.city} {address.zip}
@@ -506,7 +506,7 @@ const Checkout = () => {
                     <div style={{ flex: 1 }}>
                       <strong>Credit / Debit Card (Visa, MasterCard, Amex)</strong>
                       <div style={{ fontSize: '0.78rem', color: 'var(--color-text-muted)' }}>
-                        Instant verification â€¢ Complimentary insurance
+                        Instant verification • Complimentary insurance
                       </div>
                     </div>
                   </label>
@@ -576,7 +576,7 @@ const Checkout = () => {
                     className="btn btn-shimmer-gold"
                     style={{ marginTop: '1.2rem', padding: '1.1rem', width: '100%', borderRadius: '8px', fontSize: '0.9rem' }}
                   >
-                    Authorize & Complete Order (â‚¹{totalToPay.toLocaleString('en-IN')})
+                    Authorize & Complete Order (₹{totalToPay.toLocaleString('en-IN')})
                   </button>
                 </form>
               </motion.div>
@@ -674,10 +674,10 @@ const Checkout = () => {
                         <div style={{ flex: 1 }}>
                           <strong style={{ fontSize: '0.9rem' }}>{item.name}</strong>
                           <div style={{ fontSize: '0.78rem', color: 'var(--color-text-muted)' }}>
-                            Qty: {item.quantity} â€¢ â‚¹{item.price.toLocaleString('en-IN')}
+                            Qty: {item.quantity} • ₹{item.price.toLocaleString('en-IN')}
                           </div>
                         </div>
-                        <div style={{ fontWeight: '600' }}>â‚¹{(item.price * item.quantity).toLocaleString('en-IN')}</div>
+                        <div style={{ fontWeight: '600' }}>₹{(item.price * item.quantity).toLocaleString('en-IN')}</div>
                       </div>
                     ))}
                   </div>
@@ -727,11 +727,11 @@ const Checkout = () => {
                           {item.name}
                         </div>
                         <div style={{ fontSize: '0.75rem', color: 'var(--color-text-muted)' }}>
-                          Qty: {item.quantity} Ã— â‚¹{item.price.toLocaleString('en-IN')}
+                          Qty: {item.quantity} × ₹{item.price.toLocaleString('en-IN')}
                         </div>
                       </div>
                       <span style={{ fontWeight: 600, fontSize: '0.85rem' }}>
-                        â‚¹{(item.price * item.quantity).toLocaleString('en-IN')}
+                        ₹{(item.price * item.quantity).toLocaleString('en-IN')}
                       </span>
                     </div>
                   ))}
@@ -741,7 +741,7 @@ const Checkout = () => {
                 <div style={{ borderTop: '1px solid var(--color-border)', paddingTop: '1rem', display: 'flex', flexDirection: 'column', gap: '0.5rem', fontSize: '0.85rem' }}>
                   <div style={{ display: 'flex', justifyContent: 'space-between', color: 'var(--color-text-muted)' }}>
                     <span>Subtotal:</span>
-                    <span>â‚¹{totalToPay.toLocaleString('en-IN')}</span>
+                    <span>₹{totalToPay.toLocaleString('en-IN')}</span>
                   </div>
                   <div style={{ display: 'flex', justifyContent: 'space-between', color: '#16a34a' }}>
                     <span>Insured White-Glove Courier:</span>
@@ -765,7 +765,7 @@ const Checkout = () => {
                     }}
                   >
                     <span>Total Amount:</span>
-                    <span style={{ color: 'var(--color-obsidian)' }}>â‚¹{totalToPay.toLocaleString('en-IN')}</span>
+                    <span style={{ color: 'var(--color-obsidian)' }}>₹{totalToPay.toLocaleString('en-IN')}</span>
                   </div>
                 </div>
 

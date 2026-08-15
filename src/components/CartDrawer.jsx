@@ -120,7 +120,7 @@ const CartDrawer = () => {
                         </button>
                       </div>
 
-                      <p className="item-unit-price">â‚¹{item.price.toLocaleString('en-IN')}</p>
+                      <p className="item-unit-price">₹{item.price.toLocaleString('en-IN')}</p>
 
                       <div className="item-bottom-actions">
                         <div className="qty-pill">
@@ -167,12 +167,12 @@ const CartDrawer = () => {
               {couponApplied && (
                 <div className="summary-line discount-line">
                   <span>Privilege VIP Discount (10%):</span>
-                  <span>-â‚¹{discountAmount.toLocaleString('en-IN')}</span>
+                  <span>-₹{discountAmount.toLocaleString('en-IN')}</span>
                 </div>
               )}
               <div className="summary-line total-line">
                 <span>Estimated Subtotal</span>
-                <span className="subtotal-val">â‚¹{finalSubtotal.toLocaleString('en-IN')}</span>
+                <span className="subtotal-val">₹{finalSubtotal.toLocaleString('en-IN')}</span>
               </div>
             </div>
 

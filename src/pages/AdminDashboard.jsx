@@ -347,9 +347,9 @@ const AdminDashboard = () => {
                         {order.items?.map((item, idx) => (
                           <div key={idx} style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', fontSize: '0.88rem' }}>
                             <span>
-                              {item.name} <span style={{ color: 'var(--color-text-muted)' }}>Ã— {item.quantity}</span>
+                              {item.name} <span style={{ color: 'var(--color-text-muted)' }}>× {item.quantity}</span>
                             </span>
-                            <span style={{ fontWeight: 600 }}>â‚¹{(item.price * item.quantity).toLocaleString('en-IN')}</span>
+                            <span style={{ fontWeight: 600 }}>₹{(item.price * item.quantity).toLocaleString('en-IN')}</span>
                           </div>
                         ))}
                       </div>
@@ -366,7 +366,7 @@ const AdminDashboard = () => {
                         }}
                       >
                         <span>Total Paid:</span>
-                        <span style={{ color: 'var(--color-obsidian)' }}>â‚¹{order.total.toLocaleString('en-IN')}</span>
+                        <span style={{ color: 'var(--color-obsidian)' }}>₹{order.total.toLocaleString('en-IN')}</span>
                       </div>
                     </div>
                   </div>
@@ -401,7 +401,7 @@ const AdminDashboard = () => {
 
               <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '0.8rem' }}>
                 <div>
-                  <label style={{ fontSize: '0.82rem', fontWeight: 600, display: 'block', marginBottom: '0.3rem' }}>Price (â‚¹) *</label>
+                  <label style={{ fontSize: '0.82rem', fontWeight: 600, display: 'block', marginBottom: '0.3rem' }}>Price (₹) *</label>
                   <input
                     type="number"
                     placeholder="3500"
@@ -493,7 +493,7 @@ const AdminDashboard = () => {
                       {p.name}
                     </h4>
                     <div style={{ fontSize: '0.82rem', color: 'var(--color-text-muted)' }}>
-                      â‚¹{p.price.toLocaleString('en-IN')} â€¢ Stock: {p.stock} units
+                      ₹{p.price.toLocaleString('en-IN')} • Stock: {p.stock} units
                     </div>
                   </div>
 

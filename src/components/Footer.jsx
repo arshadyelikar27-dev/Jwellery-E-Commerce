@@ -34,7 +34,7 @@ const Footer = () => {
             <h4 style={{ marginTop: '15px' }}>Contact</h4>
             <div className="contact-entry">
               <MapPin size={16} className="contact-icon" />
-              <span>Place VendÃ´me, 75001 Paris, France â€¢ Flagship Lounge</span>
+              <span>Place Vendôme, 75001 Paris, France • Flagship Lounge</span>
             </div>
             <div className="contact-entry">
               <Mail size={16} className="contact-icon" />
@@ -52,9 +52,9 @@ const Footer = () => {
           <p>&copy; {new Date().getFullYear()} SAFA S.A. All rights reserved.</p>
           <div className="footer-bottom-links">
             <a href="#privacy">Privacy Policy</a>
-            <span>â€¢</span>
+            <span>•</span>
             <a href="#terms">Terms of Service</a>
-            <span>â€¢</span>
+            <span>•</span>
             <a href="#ethics">Ethical Sourcing Statement</a>
           </div>
         </div>
