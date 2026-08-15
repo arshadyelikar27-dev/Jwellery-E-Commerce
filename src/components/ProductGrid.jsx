@@ -44,6 +44,15 @@ const ProductGrid = () => {
                 <h3>{product.name}</h3>
               </Link>
               <p className="price">${product.price.toLocaleString()}</p>
+              <button 
+                className="mobile-card-btn"
+                onClick={(e) => {
+                  e.preventDefault();
+                  addToCart(product);
+                }}
+              >
+                Add to Cart
+              </button>
             </div>
           </motion.div>
         ))}
