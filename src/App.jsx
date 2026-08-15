@@ -1,5 +1,5 @@
 import React from 'react';
-import { Routes, Route } from 'react-router-dom';
+import { Routes, Route, useLocation } from 'react-router-dom';
 import Navbar from './components/Navbar';
 import CartDrawer from './components/CartDrawer';
 import Home from './pages/Home';
@@ -14,6 +14,9 @@ import './App.css';
 import Footer from './components/Footer';
 
 function App() {
+  const location = useLocation();
+  const isProductPage = location.pathname.startsWith('/product/');
+
   return (
     <div className="app-container">
       <Navbar />
@@ -29,7 +32,7 @@ function App() {
           <Route path="/checkout" element={<Checkout />} />
         </Routes>
       </main>
-      <Footer />
+      {!isProductPage && <Footer />}
     </div>
   );
 }

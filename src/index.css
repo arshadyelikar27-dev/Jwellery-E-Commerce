@@ -100,15 +100,20 @@ button {
 
 @media (max-width: 768px) {
   .container {
-    padding: 0 1rem;
+    padding: 0 0.8rem;
   }
   
-  h1 { font-size: 1.75rem !important; }
-  h2 { font-size: 1.5rem !important; }
-  h3 { font-size: 1.25rem !important; }
+  h1 { font-size: 1.5rem !important; }
+  h2 { font-size: 1.25rem !important; }
+  h3 { font-size: 1.1rem !important; }
   
-  .py-8 { padding: 3rem 0; }
-  .py-4 { padding: 1.5rem 0; }
+  .py-8 { padding: 1.5rem 0; }
+  .py-4 { padding: 1rem 0; }
+  
+  .btn {
+    padding: 0.6rem 1.2rem;
+    font-size: 0.8rem;
+  }
 }
 
 /* Responsive Flex Layouts */
@@ -125,11 +130,11 @@ button {
 
 @media (max-width: 768px) {
   .responsive-flex {
-    gap: 1.5rem;
+    gap: 1rem;
   }
   .responsive-flex > div:first-child img {
-    max-height: 400px;
-    object-fit: cover !important;
+    max-height: 250px;
+    object-fit: contain !important;
   }
 }
 
