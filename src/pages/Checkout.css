@@ -38,4 +38,10 @@
   .checkout-actions .btn {
     width: 100%;
   }
+  .checkout-phone-input-row {
+    flex-direction: column;
+  }
+  .checkout-phone-input-row select {
+    width: 100% !important;
+  }
 }

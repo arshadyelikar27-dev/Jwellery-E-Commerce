@@ -135,7 +135,7 @@ const Checkout = () => {
 
   return (
     <motion.div
-      className="container py-8"
+      className="checkout-page-layout container py-8"
       initial={{ opacity: 0, y: 15 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.4 }}
@@ -168,7 +168,8 @@ const Checkout = () => {
                 justifyContent: 'space-between',
                 position: 'relative',
                 maxWidth: '460px',
-                margin: '0 auto'
+                margin: '0 auto',
+                padding: '0 10px'
               }}
             >
               <div
@@ -290,10 +291,10 @@ const Checkout = () => {
                     <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', marginBottom: '0.35rem' }}>
                       <Phone size={16} color="#c5a97d" />
                       <label style={{ fontSize: '0.85rem', fontWeight: '600', color: '#1a1a1f' }}>
-                        Delivery Phone Number * <span style={{ color: '#c5a97d', fontSize: '0.78rem' }}>(Required for Courier OTP & Delivery Alerts)</span>
+                        Delivery Phone Number * <span style={{ color: '#c5a97d', fontSize: '0.75rem', display: 'block', marginTop: '2px' }}>(Required for Courier OTP)</span>
                       </label>
                     </div>
-                    <div style={{ display: 'flex', gap: '0.6rem' }}>
+                    <div className="checkout-phone-input-row" style={{ display: 'flex', gap: '0.6rem' }}>
                       <select
                         value={address.countryCode}
                         onChange={(e) => setAddress({ ...address, countryCode: e.target.value })}
