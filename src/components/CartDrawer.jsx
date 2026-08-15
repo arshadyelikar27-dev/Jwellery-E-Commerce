@@ -52,7 +52,7 @@ const CartDrawer = () => {
                         <span className="qty-val">Qty: {item.quantity}</span>
                       </div>
                       <button className="remove-btn" onClick={() => removeFromCart(item.id)}>Remove</button>
-                      <button className="btn btn-outline" style={{ fontSize: '0.8rem', padding: '0.2rem 0.5rem', marginLeft: '0.5rem' }} onClick={() => { toggleCart(); navigate('/checkout', { state: { checkoutItems: [item] } }); }}>Buy</button>
+                      <button className="item-buy-btn" onClick={() => { toggleCart(); navigate('/checkout', { state: { checkoutItems: [item] } }); }}>Buy</button>
                     </div>
                   </div>
                 </div>
