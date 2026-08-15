@@ -1,4 +1,4 @@
-import React from 'react';
+﻿import React from 'react';
 import { useCart } from '../context/CartContext';
 import { useNavigate, Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
@@ -84,7 +84,7 @@ const Cart = () => {
                         <h4 style={{ fontSize: '1.1rem', fontWeight: 600, marginBottom: '0.3rem' }}>{item.name}</h4>
                       </Link>
                       <p style={{ fontSize: '0.85rem', color: 'var(--color-text-muted)' }}>
-                        Quantity: {item.quantity} • Unit Price: ₹{item.price.toLocaleString('en-IN')}
+                        Quantity: {item.quantity} â€¢ Unit Price: â‚¹{item.price.toLocaleString('en-IN')}
                       </p>
                       <div style={{ display: 'flex', gap: '1rem', marginTop: '0.6rem' }}>
                         <button
@@ -105,7 +105,7 @@ const Cart = () => {
 
                     <div style={{ textAlign: 'right' }}>
                       <div style={{ fontWeight: 700, fontSize: '1.15rem', color: 'var(--color-obsidian)' }}>
-                        ₹{(item.price * item.quantity).toLocaleString('en-IN')}
+                        â‚¹{(item.price * item.quantity).toLocaleString('en-IN')}
                       </div>
                       <span style={{ fontSize: '0.72rem', color: '#8c734b' }}>Insured Delivery</span>
                     </div>
@@ -131,7 +131,7 @@ const Cart = () => {
                     Total Bag Value
                   </span>
                   <div style={{ fontSize: '1.8rem', fontWeight: 700, color: 'var(--color-obsidian)' }}>
-                    ₹{cartTotal.toLocaleString('en-IN')}
+                    â‚¹{cartTotal.toLocaleString('en-IN')}
                   </div>
                 </div>
 

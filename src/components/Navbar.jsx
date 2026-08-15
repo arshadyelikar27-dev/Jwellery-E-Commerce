@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+﻿import React, { useState, useEffect } from 'react';
 import { ShoppingBag, Menu, User, X, Shield, ArrowRight } from 'lucide-react';
 import { useCart } from '../context/CartContext';
 import { useAuth } from '../context/AuthContext';
@@ -56,7 +56,7 @@ const Navbar = () => {
           {/* Center Brand Identity */}
           <div className="navbar-brand">
             <Link to="/" className="brand-link">
-              <span className="brand-name">AURELIA</span>
+              <span className="brand-name">SAFA</span>
             </Link>
           </div>
 

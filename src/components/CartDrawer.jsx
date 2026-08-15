@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+﻿import React, { useEffect, useState } from 'react';
 import { X, ShoppingBag, ArrowRight } from 'lucide-react';
 import { useCart } from '../context/CartContext';
 import { useToast } from '../context/ToastContext';
@@ -27,11 +27,11 @@ const CartDrawer = () => {
 
   const handleApplyCoupon = (e) => {
     e.preventDefault();
-    if (couponCode.toUpperCase() === 'AURELIA10' || couponCode.toUpperCase() === 'LUXURY') {
+    if (couponCode.toUpperCase() === 'SAFA10' || couponCode.toUpperCase() === 'LUXURY') {
       setCouponApplied(true);
       if (addToast) addToast('VIP Privilege promo code applied successfully!');
     } else {
-      if (addToast) addToast('Invalid promo code. Try "AURELIA10"', 'error');
+      if (addToast) addToast('Invalid promo code. Try "SAFA10"', 'error');
     }
   };
 
@@ -120,7 +120,7 @@ const CartDrawer = () => {
                         </button>
                       </div>
 
-                      <p className="item-unit-price">₹{item.price.toLocaleString('en-IN')}</p>
+                      <p className="item-unit-price">â‚¹{item.price.toLocaleString('en-IN')}</p>
 
                       <div className="item-bottom-actions">
                         <div className="qty-pill">
@@ -153,7 +153,7 @@ const CartDrawer = () => {
             <form onSubmit={handleApplyCoupon} className="coupon-form">
               <input
                 type="text"
-                placeholder="VIP Promo Code (e.g. AURELIA10)"
+                placeholder="VIP Promo Code (e.g. SAFA10)"
                 value={couponCode}
                 onChange={(e) => setCouponCode(e.target.value)}
                 className="coupon-input"
@@ -167,12 +167,12 @@ const CartDrawer = () => {
               {couponApplied && (
                 <div className="summary-line discount-line">
                   <span>Privilege VIP Discount (10%):</span>
-                  <span>-₹{discountAmount.toLocaleString('en-IN')}</span>
+                  <span>-â‚¹{discountAmount.toLocaleString('en-IN')}</span>
                 </div>
               )}
               <div className="summary-line total-line">
                 <span>Estimated Subtotal</span>
-                <span className="subtotal-val">₹{finalSubtotal.toLocaleString('en-IN')}</span>
+                <span className="subtotal-val">â‚¹{finalSubtotal.toLocaleString('en-IN')}</span>
               </div>
             </div>
 

@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+﻿import React, { useState } from 'react';
 import { useAuth } from '../context/AuthContext';
 import { useToast } from '../context/ToastContext';
 import { useNavigate, Link } from 'react-router-dom';
@@ -17,7 +17,7 @@ const Register = () => {
     e.preventDefault();
     const result = register(name, email, password);
     if (result.success) {
-      if (addToast) addToast(`Welcome to Aurelia, ${name}! Your account is ready.`);
+      if (addToast) addToast(`Welcome to SAFA, ${name}! Your account is ready.`);
       navigate('/');
     } else {
       if (addToast) addToast(result.message, 'error');
@@ -110,7 +110,7 @@ const Register = () => {
               </label>
               <input
                 type="password"
-                placeholder="••••••••"
+                placeholder="â€¢â€¢â€¢â€¢â€¢â€¢â€¢â€¢"
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
                 required
@@ -130,7 +130,7 @@ const Register = () => {
               className="btn btn-shimmer-gold"
               style={{ marginTop: '0.5rem', width: '100%', padding: '0.95rem', borderRadius: '8px', fontSize: '0.88rem' }}
             >
-              Join Aurelia Maison
+              Join SAFA Maison
             </button>
           </form>
 

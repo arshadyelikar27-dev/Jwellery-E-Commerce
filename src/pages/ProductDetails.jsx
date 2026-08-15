@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+﻿import React, { useState } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import { useProducts } from '../context/ProductContext';
 import { useCart } from '../context/CartContext';
@@ -102,7 +102,7 @@ const ProductDetails = () => {
                 delay={0.1}
               />
               <div className="image-luxury-watermark">
-                <span>AURELIA ATELIER</span>
+                <span>SAFA ATELIER</span>
               </div>
             </div>
           </div>
@@ -114,7 +114,7 @@ const ProductDetails = () => {
 
             <h1 className="details-title">{product.name}</h1>
             <div className="details-price-row">
-              <span className="main-price">₹{product.price.toLocaleString('en-IN')}</span>
+              <span className="main-price">â‚¹{product.price.toLocaleString('en-IN')}</span>
               <span className="tax-inclusive-tag">Includes all applicable luxury duties & taxes</span>
             </div>
           </div>
@@ -179,7 +179,7 @@ const ProductDetails = () => {
                     <ul className="spec-bullet-list">
                       <li><strong>Setting Type:</strong> Precision Micro-Prong & Bezel setting</li>
                       <li><strong>Hallmarking:</strong> Official 750 / 18K Gold hallmark stamp</li>
-                      <li><strong>Origin:</strong> Handcrafted in the Aurelia Paris Atelier</li>
+                      <li><strong>Origin:</strong> Handcrafted in the SAFA Paris Atelier</li>
                     </ul>
                   </motion.div>
                 )}
@@ -205,7 +205,7 @@ const ProductDetails = () => {
                     transition={{ duration: 0.3 }}
                   >
                     <p>
-                      Every order arrives encased in our signature velvet-lined Aurelia presentation box, wrapped with gold-embossed satin ribbon, accompanied by an individual Certificate of Authenticity and microfiber travel pouch.
+                      Every order arrives encased in our signature velvet-lined SAFA presentation box, wrapped with gold-embossed satin ribbon, accompanied by an individual Certificate of Authenticity and microfiber travel pouch.
                     </p>
                   </motion.div>
                 )}
@@ -231,7 +231,7 @@ const ProductDetails = () => {
                     transition={{ duration: 0.3 }}
                   >
                     <p>
-                      We provide insured door-to-door express delivery with signature required upon receipt. If your ring requires adjustments, Aurelia provides one complimentary ring resizing within 60 days of purchase.
+                      We provide insured door-to-door express delivery with signature required upon receipt. If your ring requires adjustments, SAFA provides one complimentary ring resizing within 60 days of purchase.
                     </p>
                   </motion.div>
                 )}
@@ -245,7 +245,7 @@ const ProductDetails = () => {
       <div className="mobile-sticky-action-bar">
         <div className="mobile-bar-price">
           <span>Total</span>
-          <strong>₹{product.price.toLocaleString('en-IN')}</strong>
+          <strong>â‚¹{product.price.toLocaleString('en-IN')}</strong>
         </div>
         <button className="btn btn-shimmer-gold mobile-bar-btn" onClick={handleAddToCart}>
           <ShoppingBag size={16} /> Add to Bag

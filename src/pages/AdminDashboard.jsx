@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+﻿import React, { useState } from 'react';
 import { useAuth } from '../context/AuthContext';
 import { useProducts } from '../context/ProductContext';
 import { useOrders } from '../context/OrderContext';
@@ -42,7 +42,7 @@ const AdminDashboard = () => {
       <div className="container py-8 text-center" style={{ maxWidth: '480px', margin: '0 auto' }}>
         <h2>Maison Access Restricted</h2>
         <p style={{ color: 'var(--color-text-muted)', margin: '1rem 0 1.5rem' }}>
-          This administrative control room is reserved exclusively for verified Aurelia managers.
+          This administrative control room is reserved exclusively for verified SAFA managers.
         </p>
         <button onClick={() => navigate('/login')} className="btn btn-primary">
           Sign in as Administrator
@@ -103,7 +103,7 @@ const AdminDashboard = () => {
           <div>
             <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
               <Shield size={18} color="#c5a97d" />
-              <h1 style={{ fontSize: '1.6rem', margin: 0 }}>Aurelia Atelier Manager</h1>
+              <h1 style={{ fontSize: '1.6rem', margin: 0 }}>SAFA Atelier Manager</h1>
             </div>
             <small style={{ color: 'var(--color-text-muted)' }}>Logged in as: {user.name} ({user.email})</small>
           </div>
@@ -347,9 +347,9 @@ const AdminDashboard = () => {
                         {order.items?.map((item, idx) => (
                           <div key={idx} style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', fontSize: '0.88rem' }}>
                             <span>
-                              {item.name} <span style={{ color: 'var(--color-text-muted)' }}>× {item.quantity}</span>
+                              {item.name} <span style={{ color: 'var(--color-text-muted)' }}>Ã— {item.quantity}</span>
                             </span>
-                            <span style={{ fontWeight: 600 }}>₹{(item.price * item.quantity).toLocaleString('en-IN')}</span>
+                            <span style={{ fontWeight: 600 }}>â‚¹{(item.price * item.quantity).toLocaleString('en-IN')}</span>
                           </div>
                         ))}
                       </div>
@@ -366,7 +366,7 @@ const AdminDashboard = () => {
                         }}
                       >
                         <span>Total Paid:</span>
-                        <span style={{ color: 'var(--color-obsidian)' }}>₹{order.total.toLocaleString('en-IN')}</span>
+                        <span style={{ color: 'var(--color-obsidian)' }}>â‚¹{order.total.toLocaleString('en-IN')}</span>
                       </div>
                     </div>
                   </div>
@@ -401,7 +401,7 @@ const AdminDashboard = () => {
 
               <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '0.8rem' }}>
                 <div>
-                  <label style={{ fontSize: '0.82rem', fontWeight: 600, display: 'block', marginBottom: '0.3rem' }}>Price (₹) *</label>
+                  <label style={{ fontSize: '0.82rem', fontWeight: 600, display: 'block', marginBottom: '0.3rem' }}>Price (â‚¹) *</label>
                   <input
                     type="number"
                     placeholder="3500"
@@ -493,7 +493,7 @@ const AdminDashboard = () => {
                       {p.name}
                     </h4>
                     <div style={{ fontSize: '0.82rem', color: 'var(--color-text-muted)' }}>
-                      ₹{p.price.toLocaleString('en-IN')} • Stock: {p.stock} units
+                      â‚¹{p.price.toLocaleString('en-IN')} â€¢ Stock: {p.stock} units
                     </div>
                   </div>
 

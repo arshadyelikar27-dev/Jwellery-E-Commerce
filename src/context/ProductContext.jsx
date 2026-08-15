@@ -1,4 +1,4 @@
-import React, { createContext, useState, useContext, useEffect } from 'react';
+﻿import React, { createContext, useState, useContext, useEffect } from 'react';
 
 const ProductContext = createContext();
 
@@ -16,7 +16,7 @@ const initialProducts = [
   },
   {
     id: 2,
-    name: 'Aurelia Timepiece',
+    name: 'SAFA Timepiece',
     price: 5800,
     image: '/assets/product_watch.jpg',
     description: 'Classic luxury timepiece with a timeless design. Crafted with precision engineering and a sapphire crystal dial.',
