@@ -18,6 +18,7 @@ import {
   Calendar,
   Printer
 } from 'lucide-react';
+import './Checkout.css';
 
 const countryCodes = [
   { code: '+91', country: 'IN', label: '+91 (India)' },
@@ -242,7 +243,7 @@ const Checkout = () => {
           </div>
         )}
 
-        <div style={{ display: 'grid', gridTemplateColumns: step < 3 ? '1fr 340px' : '1fr', gap: '2rem' }}>
+        <div className={`checkout-grid ${step === 3 ? 'step-3' : ''}`}>
           {/* Main Form Area */}
           <div>
             {/* STEP 1: DELIVERY FORM WITH PHONE NUMBER */}
@@ -356,7 +357,7 @@ const Checkout = () => {
                   </div>
 
                   {/* City & ZIP */}
-                  <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '1rem' }}>
+                  <div className="city-zip-grid">
                     <div>
                       <label style={{ display: 'block', fontSize: '0.85rem', fontWeight: '600', marginBottom: '0.35rem' }}>
                         City / Municipality *
@@ -681,7 +682,7 @@ const Checkout = () => {
                   </div>
                 </div>
 
-                <div style={{ display: 'flex', gap: '1rem', justifyContent: 'center', flexWrap: 'wrap' }}>
+                <div className="checkout-actions">
                   <button
                     className="btn btn-outline"
                     onClick={() => window.print()}

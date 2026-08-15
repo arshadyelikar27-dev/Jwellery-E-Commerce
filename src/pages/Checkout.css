@@ -1,0 +1,41 @@
+/* Checkout.css */
+.checkout-grid {
+  display: grid;
+  grid-template-columns: 1fr 340px;
+  gap: 2rem;
+}
+
+.checkout-grid.step-3 {
+  grid-template-columns: 1fr;
+}
+
+.city-zip-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+}
+
+.checkout-actions {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+@media (max-width: 900px) {
+  .checkout-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 500px) {
+  .city-zip-grid {
+    grid-template-columns: 1fr;
+  }
+  .checkout-actions {
+    flex-direction: column;
+  }
+  .checkout-actions .btn {
+    width: 100%;
+  }
+}
