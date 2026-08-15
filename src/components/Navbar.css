@@ -288,7 +288,8 @@
   letter-spacing: 0.5px;
 }
 
-.mobile-nav-item:active {
+.mobile-nav-item:active,
+.mobile-nav-item.active {
   color: var(--color-accent);
 }
 

@@ -1,4 +1,4 @@
-﻿import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import { ShoppingBag, Menu, User, X, Shield, ArrowRight } from 'lucide-react';
 import { useCart } from '../context/CartContext';
 import { useAuth } from '../context/AuthContext';
@@ -11,6 +11,7 @@ const Navbar = () => {
   const { user } = useAuth();
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [activeSection, setActiveSection] = useState('hero');
   const location = useLocation();
 
   useEffect(() => {
@@ -20,6 +21,37 @@ const Navbar = () => {
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
+
+  // Intersection Observer for scrollspy
+  useEffect(() => {
+    if (location.pathname !== '/') {
+      setActiveSection('');
+      return;
+    }
+
+    const sections = ['hero', 'collections', 'footer'];
+    
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            setActiveSection(entry.target.id);
+          }
+        });
+      },
+      { threshold: 0.3 }
+    );
+
+    // Timeout allows DOM to render before observing
+    setTimeout(() => {
+      sections.forEach((id) => {
+        const el = document.getElementById(id);
+        if (el) observer.observe(el);
+      });
+    }, 100);
+
+    return () => observer.disconnect();
+  }, [location.pathname]);
 
   // Close mobile menu on route change
   useEffect(() => {
@@ -41,13 +73,13 @@ const Navbar = () => {
             </button>
 
             <nav className="desktop-nav">
-              <Link to="/" className={`nav-link ${location.pathname === '/' ? 'active' : ''}`}>
+              <Link to="/" className={`nav-link ${location.pathname === '/' && activeSection === 'hero' ? 'active' : ''}`}>
                 Home
               </Link>
-              <a href="/#collections" className="nav-link">
+              <a href="/#collections" className={`nav-link ${activeSection === 'collections' ? 'active' : ''}`}>
                 Collection
               </a>
-              <a href="/#footer" className="nav-link">
+              <a href="/#footer" className={`nav-link ${activeSection === 'footer' ? 'active' : ''}`}>
                 Contact
               </a>
             </nav>
@@ -114,15 +146,15 @@ const Navbar = () => {
               transition={{ duration: 0.3, ease: [0.16, 1, 0.3, 1] }}
             >
               <div className="mobile-nav-inner">
-                <Link to="/" className="mobile-nav-item" onClick={() => setIsMobileMenuOpen(false)}>
+                <Link to="/" className={`mobile-nav-item ${location.pathname === '/' && activeSection === 'hero' ? 'active' : ''}`} onClick={() => setIsMobileMenuOpen(false)}>
                   <span>Home</span>
                   <ArrowRight size={16} />
                 </Link>
-                <a href="/#collections" className="mobile-nav-item" onClick={() => setIsMobileMenuOpen(false)}>
+                <a href="/#collections" className={`mobile-nav-item ${activeSection === 'collections' ? 'active' : ''}`} onClick={() => setIsMobileMenuOpen(false)}>
                   <span>Collection</span>
                   <ArrowRight size={16} />
                 </a>
-                <a href="/#footer" className="mobile-nav-item" onClick={() => setIsMobileMenuOpen(false)}>
+                <a href="/#footer" className={`mobile-nav-item ${activeSection === 'footer' ? 'active' : ''}`} onClick={() => setIsMobileMenuOpen(false)}>
                   <span>Contact</span>
                   <ArrowRight size={16} />
                 </a>

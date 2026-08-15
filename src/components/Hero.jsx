@@ -1,4 +1,4 @@
-﻿import React from 'react';
+import React from 'react';
 import { motion } from 'framer-motion';
 import { ArrowDown } from 'lucide-react';
 import './Hero.css';
@@ -25,7 +25,7 @@ const Hero = () => {
   };
 
   return (
-    <section className="hero-luxury-section">
+    <section className="hero-luxury-section" id="hero">
       <div className="hero-video-container">
         <video
           autoPlay
