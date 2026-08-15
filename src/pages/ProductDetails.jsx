@@ -10,7 +10,7 @@ const ProductDetails = () => {
   const { id } = useParams();
   const navigate = useNavigate();
   const { products } = useProducts();
-  const { addToCart } = useCart();
+  const { addToCart, closeCart } = useCart();
   
   const product = products.find(p => p.id === parseInt(id));
 
@@ -26,7 +26,8 @@ const ProductDetails = () => {
   }
 
   const handleBuyNow = () => {
-    addToCart(product);
+    addToCart(product, false);
+    if (closeCart) closeCart();
     navigate('/checkout', { state: { checkoutItems: [{ ...product, quantity: 1 }] } });
   };
 
@@ -51,7 +52,7 @@ const ProductDetails = () => {
         <div className="product-info-box">
           <span className="product-badge">Fine Jewelry</span>
           <h1 className="product-title">{product.name}</h1>
-          <div className="product-price">${product.price.toLocaleString()}</div>
+          <div className="product-price">₹{product.price.toLocaleString('en-IN')}</div>
           
           <div className="product-desc">
             {product.description}

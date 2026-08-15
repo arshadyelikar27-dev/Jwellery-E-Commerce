@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useCart } from '../context/CartContext';
 import { useOrders } from '../context/OrderContext';
 import { useAuth } from '../context/AuthContext';
@@ -7,13 +7,17 @@ import { motion } from 'framer-motion';
 import { ArrowLeft, CheckCircle, CreditCard, Smartphone, Truck } from 'lucide-react';
 
 const Checkout = () => {
-  const { cartItems: contextCartItems, cartTotal: contextCartTotal, clearCart, removeFromCart } = useCart();
+  const { cartItems: contextCartItems, cartTotal: contextCartTotal, clearCart, removeFromCart, closeCart } = useCart();
   const { addOrder } = useOrders();
   const { user } = useAuth();
   const navigate = useNavigate();
   const location = useLocation();
   const [step, setStep] = useState(1);
   const [address, setAddress] = useState({ name: '', street: '', city: '', zip: '' });
+
+  useEffect(() => {
+    if (closeCart) closeCart();
+  }, [closeCart]);
   
   // Determine items to checkout
   const specificItems = location.state?.checkoutItems;
@@ -165,7 +169,7 @@ const Checkout = () => {
               
               <div style={{ marginTop: '0.8rem', padding: '1rem', background: '#fdfbf7', border: '1px solid #f2e9dc', borderRadius: '6px', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
                 <span style={{ fontSize: '0.9rem' }}>Total Amount to Pay:</span>
-                <strong style={{ fontSize: '1.2rem', color: '#111' }}>${totalToPay.toLocaleString()}</strong>
+                <strong style={{ fontSize: '1.2rem', color: '#111' }}>₹{totalToPay.toLocaleString('en-IN')}</strong>
               </div>
 
               <button type="submit" className="btn btn-primary" style={{ marginTop: '0.8rem', padding: '0.85rem', borderRadius: '6px' }}>Place Order</button>

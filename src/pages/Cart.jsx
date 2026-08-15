@@ -41,14 +41,14 @@ const Cart = () => {
                     <img src={item.image} alt={item.name} style={{ width: '70px', height: '70px', objectFit: 'cover', borderRadius: '6px', border: '1px solid #eee' }} />
                     <div style={{ flex: 1, minWidth: 0 }}>
                       <h4 style={{ fontSize: '0.95rem', fontWeight: '600', marginBottom: '0.2rem', whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }}>{item.name}</h4>
-                      <p style={{ fontSize: '0.85rem', color: 'var(--color-text-muted)' }}>Qty: {item.quantity} × ${item.price.toLocaleString()}</p>
+                      <p style={{ fontSize: '0.85rem', color: 'var(--color-text-muted)' }}>Qty: {item.quantity} × ₹{item.price.toLocaleString('en-IN')}</p>
                       <div style={{ display: 'flex', gap: '0.5rem', marginTop: '0.4rem' }}>
                         <button onClick={() => removeFromCart(item.id)} style={{ fontSize: '0.75rem', color: '#c53030', textDecoration: 'underline' }}>Remove</button>
                         <button className="btn btn-outline" style={{ fontSize: '0.75rem', padding: '0.2rem 0.6rem', borderRadius: '4px' }} onClick={() => navigate('/checkout', { state: { checkoutItems: [item] } })}>Buy Item</button>
                       </div>
                     </div>
                     <div style={{ fontWeight: '700', fontSize: '0.95rem' }}>
-                      ${(item.price * item.quantity).toLocaleString()}
+                      ₹{(item.price * item.quantity).toLocaleString('en-IN')}
                     </div>
                   </div>
                 ))}
@@ -56,7 +56,7 @@ const Cart = () => {
 
               <div style={{ display: 'flex', justifyContent: 'space-between', marginTop: '1.5rem', paddingTop: '1rem', borderTop: '2px solid var(--color-border)', fontSize: '1.1rem', fontWeight: 'bold' }}>
                 <span>Subtotal:</span>
-                <span>${cartTotal.toLocaleString()}</span>
+                <span>₹{cartTotal.toLocaleString('en-IN')}</span>
               </div>
 
               <button 

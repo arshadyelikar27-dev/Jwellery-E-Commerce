@@ -15,7 +15,7 @@ export const CartProvider = ({ children }) => {
   }, [cartItems]);
   const [isCartOpen, setIsCartOpen] = useState(false);
 
-  const addToCart = (product) => {
+  const addToCart = (product, openDrawer = true) => {
     setCartItems(prev => {
       const existing = prev.find(item => item.id === product.id);
       if (existing) {
@@ -25,7 +25,9 @@ export const CartProvider = ({ children }) => {
       }
       return [...prev, { ...product, quantity: 1 }];
     });
-    setIsCartOpen(true);
+    if (openDrawer) {
+      setIsCartOpen(true);
+    }
   };
 
   const removeFromCart = (productId) => {
@@ -33,6 +35,8 @@ export const CartProvider = ({ children }) => {
   };
 
   const toggleCart = () => setIsCartOpen(!isCartOpen);
+  const closeCart = () => setIsCartOpen(false);
+  const openCart = () => setIsCartOpen(true);
 
   const cartTotal = cartItems.reduce((total, item) => total + (item.price * item.quantity), 0);
   const cartCount = cartItems.reduce((count, item) => count + item.quantity, 0);
@@ -46,7 +50,10 @@ export const CartProvider = ({ children }) => {
       removeFromCart,
       clearCart,
       isCartOpen,
+      setIsCartOpen,
       toggleCart,
+      closeCart,
+      openCart,
       cartTotal,
       cartCount
     }}>

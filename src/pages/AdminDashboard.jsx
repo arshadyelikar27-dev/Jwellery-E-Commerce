@@ -87,7 +87,7 @@ const AdminDashboard = () => {
             <h3>Add New Product</h3>
             <form onSubmit={handleAddProduct} style={{ display: 'flex', flexDirection: 'column', gap: '1rem', marginTop: '1rem' }}>
               <input placeholder="Product Name" required value={newProduct.name} onChange={e => setNewProduct({...newProduct, name: e.target.value})} style={{ padding: '0.8rem', border: '1px solid var(--color-border)' }} />
-              <input type="number" placeholder="Price" required value={newProduct.price} onChange={e => setNewProduct({...newProduct, price: e.target.value})} style={{ padding: '0.8rem', border: '1px solid var(--color-border)' }} />
+              <input type="number" placeholder="Price (₹)" required value={newProduct.price} onChange={e => setNewProduct({...newProduct, price: e.target.value})} style={{ padding: '0.8rem', border: '1px solid var(--color-border)' }} />
               <textarea placeholder="Description" required value={newProduct.description} onChange={e => setNewProduct({...newProduct, description: e.target.value})} style={{ padding: '0.8rem', border: '1px solid var(--color-border)' }} />
               <textarea placeholder="Details/Specs" required value={newProduct.details} onChange={e => setNewProduct({...newProduct, details: e.target.value})} style={{ padding: '0.8rem', border: '1px solid var(--color-border)' }} />
               <input type="number" placeholder="Stock" required value={newProduct.stock} onChange={e => setNewProduct({...newProduct, stock: e.target.value})} style={{ padding: '0.8rem', border: '1px solid var(--color-border)' }} />
@@ -110,7 +110,7 @@ const AdminDashboard = () => {
               {products.map(p => (
                 <div key={p.id} style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', padding: '1rem', border: '1px solid var(--color-border)' }}>
                   <div>
-                    <strong>{p.name}</strong> - ${p.price.toLocaleString()} (Stock: {p.stock})
+                    <strong>{p.name}</strong> - ₹{p.price.toLocaleString('en-IN')} (Stock: {p.stock})
                   </div>
                   <button className="btn" onClick={() => deleteProduct(p.id)} style={{ padding: '0.2rem 0.5rem', color: 'red' }}>Delete</button>
                 </div>
@@ -133,7 +133,7 @@ const AdminDashboard = () => {
                     <strong>Customer:</strong> {order.user?.name} ({order.user?.email})
                   </div>
                   <div style={{ textAlign: 'right' }}>
-                    <strong>Total:</strong> ${order.total.toLocaleString()} <br/>
+                    <strong>Total:</strong> ₹{order.total.toLocaleString('en-IN')} <br/>
                     <div style={{ marginTop: '0.5rem', display: 'flex', alignItems: 'center', gap: '0.5rem', justifyContent: 'flex-end' }}>
                       <label>Status:</label>
                       <select 
@@ -153,7 +153,7 @@ const AdminDashboard = () => {
                   <strong>Items:</strong>
                   <ul style={{ marginTop: '0.5rem', paddingLeft: '1.5rem' }}>
                     {order.items.map((item, idx) => (
-                      <li key={idx}>{item.name} - Qty: {item.quantity} - ${item.price.toLocaleString()}</li>
+                      <li key={idx}>{item.name} - Qty: {item.quantity} - ₹{item.price.toLocaleString('en-IN')}</li>
                     ))}
                   </ul>
                 </div>

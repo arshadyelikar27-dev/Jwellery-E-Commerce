@@ -5,7 +5,7 @@ import { useNavigate } from 'react-router-dom';
 import './CartDrawer.css';
 
 const CartDrawer = () => {
-  const { isCartOpen, toggleCart, cartItems, addToCart, removeFromCart, cartTotal } = useCart();
+  const { isCartOpen, toggleCart, closeCart, cartItems, addToCart, removeFromCart, cartTotal } = useCart();
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -25,7 +25,7 @@ const CartDrawer = () => {
       <div className={`cart-drawer ${isCartOpen ? 'open' : ''}`}>
         <div className="cart-header">
           <h2>Your Cart</h2>
-          <button className="close-btn" onClick={toggleCart}>
+          <button className="close-btn" onClick={closeCart || toggleCart}>
             <X size={24} />
           </button>
         </div>
@@ -35,7 +35,7 @@ const CartDrawer = () => {
             <div className="empty-cart">
               <ShoppingBag size={48} className="empty-icon" />
               <p>Your cart is empty.</p>
-              <button className="btn btn-outline mt-4" onClick={toggleCart}>Continue Shopping</button>
+              <button className="btn btn-outline mt-4" onClick={closeCart || toggleCart}>Continue Shopping</button>
             </div>
           ) : (
             <div className="cart-items">
@@ -46,13 +46,13 @@ const CartDrawer = () => {
                   </div>
                   <div className="item-details">
                     <h4>{item.name}</h4>
-                    <p className="item-price">${item.price.toLocaleString()}</p>
+                    <p className="item-price">₹{item.price.toLocaleString('en-IN')}</p>
                     <div className="item-actions">
                       <div className="quantity-controls">
                         <span className="qty-val">Qty: {item.quantity}</span>
                       </div>
                       <button className="remove-btn" onClick={() => removeFromCart(item.id)}>Remove</button>
-                      <button className="item-buy-btn" onClick={() => { toggleCart(); navigate('/checkout', { state: { checkoutItems: [item] } }); }}>Buy</button>
+                      <button className="item-buy-btn" onClick={() => { if (closeCart) closeCart(); else toggleCart(); navigate('/checkout', { state: { checkoutItems: [item] } }); }}>Buy</button>
                     </div>
                   </div>
                 </div>
@@ -65,9 +65,9 @@ const CartDrawer = () => {
           <div className="cart-footer">
             <div className="cart-total">
               <span>Subtotal</span>
-              <span>${cartTotal.toLocaleString()}</span>
+              <span>₹{cartTotal.toLocaleString('en-IN')}</span>
             </div>
-            <button className="btn btn-primary checkout-btn" onClick={() => { toggleCart(); navigate('/checkout'); }}>
+            <button className="btn btn-primary checkout-btn" onClick={() => { if (closeCart) closeCart(); else toggleCart(); navigate('/checkout'); }}>
               Proceed to Checkout
             </button>
           </div>

@@ -43,7 +43,7 @@ const ProductGrid = () => {
               <Link to={`/product/${product.id}`} style={{ textDecoration: 'none', color: 'inherit' }}>
                 <h3>{product.name}</h3>
               </Link>
-              <p className="price">${product.price.toLocaleString()}</p>
+              <p className="price">₹{product.price.toLocaleString('en-IN')}</p>
               <button 
                 className="mobile-card-btn"
                 onClick={(e) => {
