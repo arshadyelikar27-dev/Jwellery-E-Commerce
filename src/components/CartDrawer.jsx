@@ -1,12 +1,18 @@
-import React, { useEffect } from 'react';
-import { X, Minus, Plus, ShoppingBag } from 'lucide-react';
+import React, { useEffect, useState } from 'react';
+import { X, ShoppingBag, ArrowRight } from 'lucide-react';
 import { useCart } from '../context/CartContext';
+import { useToast } from '../context/ToastContext';
 import { useNavigate } from 'react-router-dom';
+import { motion, AnimatePresence } from 'framer-motion';
+import SwipeRevealImage from './SwipeRevealImage';
 import './CartDrawer.css';
 
 const CartDrawer = () => {
-  const { isCartOpen, toggleCart, closeCart, cartItems, addToCart, removeFromCart, cartTotal } = useCart();
+  const { isCartOpen, toggleCart, closeCart, cartItems, removeFromCart, cartTotal } = useCart();
+  const { addToast } = useToast();
   const navigate = useNavigate();
+  const [couponCode, setCouponCode] = useState('');
+  const [couponApplied, setCouponApplied] = useState(false);
 
   useEffect(() => {
     if (isCartOpen) {
@@ -19,56 +25,167 @@ const CartDrawer = () => {
     };
   }, [isCartOpen]);
 
+  const handleApplyCoupon = (e) => {
+    e.preventDefault();
+    if (couponCode.toUpperCase() === 'AURELIA10' || couponCode.toUpperCase() === 'LUXURY') {
+      setCouponApplied(true);
+      if (addToast) addToast('VIP Privilege promo code applied successfully!');
+    } else {
+      if (addToast) addToast('Invalid promo code. Try "AURELIA10"', 'error');
+    }
+  };
+
+  const discountAmount = couponApplied ? Math.round(cartTotal * 0.1) : 0;
+  const finalSubtotal = cartTotal - discountAmount;
+
   return (
     <>
-      <div className={`cart-overlay ${isCartOpen ? 'open' : ''}`} onClick={toggleCart} />
-      <div className={`cart-drawer ${isCartOpen ? 'open' : ''}`}>
+      <AnimatePresence>
+        {isCartOpen && (
+          <motion.div
+            className="cart-drawer-overlay"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            onClick={closeCart || toggleCart}
+          />
+        )}
+      </AnimatePresence>
+
+      <div className={`luxury-cart-drawer ${isCartOpen ? 'open' : ''}`}>
+        {/* Drawer Header */}
         <div className="cart-header">
-          <h2>Your Cart</h2>
-          <button className="close-btn" onClick={closeCart || toggleCart}>
-            <X size={24} />
+          <div className="header-title-group">
+            <h2>Your Shopping Bag</h2>
+            <span className="cart-item-count">
+              ({cartItems.reduce((acc, i) => acc + i.quantity, 0)} {cartItems.length === 1 ? 'item' : 'items'})
+            </span>
+          </div>
+          <button className="cart-close-icon" onClick={closeCart || toggleCart} aria-label="Close Shopping Bag">
+            <X size={20} />
           </button>
         </div>
 
-        <div className="cart-content">
+        {/* Cart Items List */}
+        <div className="cart-body">
           {cartItems.length === 0 ? (
-            <div className="empty-cart">
-              <ShoppingBag size={48} className="empty-icon" />
-              <p>Your cart is empty.</p>
-              <button className="btn btn-outline mt-4" onClick={closeCart || toggleCart}>Continue Shopping</button>
+            <div className="empty-cart-state">
+              <div className="empty-icon-circle">
+                <ShoppingBag size={36} color="#c5a97d" />
+              </div>
+              <h3>Your bag is currently empty</h3>
+              <p>Explore our latest creations of certified diamonds and heirloom gold.</p>
+              <button
+                className="btn btn-shimmer-gold mt-4"
+                onClick={() => {
+                  if (closeCart) closeCart();
+                  else toggleCart();
+                  navigate('/');
+                }}
+              >
+                Discover High Jewelry
+              </button>
             </div>
           ) : (
-            <div className="cart-items">
-              {cartItems.map(item => (
-                <div key={item.id} className="cart-item">
-                  <div className="item-image">
-                    <img src={item.image} alt={item.name} />
-                  </div>
-                  <div className="item-details">
-                    <h4>{item.name}</h4>
-                    <p className="item-price">₹{item.price.toLocaleString('en-IN')}</p>
-                    <div className="item-actions">
-                      <div className="quantity-controls">
-                        <span className="qty-val">Qty: {item.quantity}</span>
-                      </div>
-                      <button className="remove-btn" onClick={() => removeFromCart(item.id)}>Remove</button>
-                      <button className="item-buy-btn" onClick={() => { if (closeCart) closeCart(); else toggleCart(); navigate('/checkout', { state: { checkoutItems: [item] } }); }}>Buy</button>
+            <div className="cart-items-wrapper">
+              <AnimatePresence>
+                {cartItems.map((item) => (
+                  <motion.div
+                    key={item.id}
+                    className="cart-item-card"
+                    layout
+                    initial={{ opacity: 0, y: 10 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    exit={{ opacity: 0, scale: 0.95 }}
+                  >
+                    <div className="item-thumbnail">
+                      <SwipeRevealImage
+                        src={item.image}
+                        alt={item.name}
+                        aspectRatio="1/1"
+                        curtainColor="gold"
+                        duration={0.5}
+                      />
                     </div>
-                  </div>
-                </div>
-              ))}
+
+                    <div className="item-details">
+                      <div className="item-title-row">
+                        <h4 className="item-title">{item.name}</h4>
+                        <button
+                          className="item-remove-link"
+                          onClick={() => removeFromCart(item.id)}
+                          title="Remove item"
+                        >
+                          <X size={14} />
+                        </button>
+                      </div>
+
+                      <p className="item-unit-price">₹{item.price.toLocaleString('en-IN')}</p>
+
+                      <div className="item-bottom-actions">
+                        <div className="qty-pill">
+                          <span className="qty-text">Qty: {item.quantity}</span>
+                        </div>
+
+                        <button
+                          className="item-direct-buy-btn"
+                          onClick={() => {
+                            if (closeCart) closeCart();
+                            else toggleCart();
+                            navigate('/checkout', { state: { checkoutItems: [item] } });
+                          }}
+                        >
+                          Checkout Item <ArrowRight size={12} />
+                        </button>
+                      </div>
+                    </div>
+                  </motion.div>
+                ))}
+              </AnimatePresence>
             </div>
           )}
         </div>
 
+        {/* Drawer Footer */}
         {cartItems.length > 0 && (
           <div className="cart-footer">
-            <div className="cart-total">
-              <span>Subtotal</span>
-              <span>₹{cartTotal.toLocaleString('en-IN')}</span>
+            {/* Promo Code Toggle */}
+            <form onSubmit={handleApplyCoupon} className="coupon-form">
+              <input
+                type="text"
+                placeholder="VIP Promo Code (e.g. AURELIA10)"
+                value={couponCode}
+                onChange={(e) => setCouponCode(e.target.value)}
+                className="coupon-input"
+              />
+              <button type="submit" className="coupon-btn">
+                Apply
+              </button>
+            </form>
+
+            <div className="price-summary-box">
+              {couponApplied && (
+                <div className="summary-line discount-line">
+                  <span>Privilege VIP Discount (10%):</span>
+                  <span>-₹{discountAmount.toLocaleString('en-IN')}</span>
+                </div>
+              )}
+              <div className="summary-line total-line">
+                <span>Estimated Subtotal</span>
+                <span className="subtotal-val">₹{finalSubtotal.toLocaleString('en-IN')}</span>
+              </div>
             </div>
-            <button className="btn btn-primary checkout-btn" onClick={() => { if (closeCart) closeCart(); else toggleCart(); navigate('/checkout'); }}>
-              Proceed to Checkout
+
+            <button
+              className="btn btn-shimmer-gold drawer-checkout-btn"
+              onClick={() => {
+                if (closeCart) closeCart();
+                else toggleCart();
+                navigate('/checkout');
+              }}
+            >
+              <span>Proceed to Checkout</span>
+              <ArrowRight size={16} />
             </button>
           </div>
         )}

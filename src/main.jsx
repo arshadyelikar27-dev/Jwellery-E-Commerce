@@ -5,6 +5,7 @@ import { AuthProvider } from './context/AuthContext'
 import { ProductProvider } from './context/ProductContext'
 import { CartProvider } from './context/CartContext'
 import { OrderProvider } from './context/OrderContext'
+import { ToastProvider } from './context/ToastContext'
 import App from './App.jsx'
 import './index.css'
 
@@ -15,7 +16,9 @@ createRoot(document.getElementById('root')).render(
         <ProductProvider>
           <CartProvider>
             <OrderProvider>
-              <App />
+              <ToastProvider>
+                <App />
+              </ToastProvider>
             </OrderProvider>
           </CartProvider>
         </ProductProvider>

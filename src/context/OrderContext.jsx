@@ -8,23 +8,39 @@ export const OrderProvider = ({ children }) => {
   const [orders, setOrders] = useState(() => {
     const saved = localStorage.getItem('orders');
     if (saved) return JSON.parse(saved);
-    // Mock initial orders
+    // Initial luxury orders with phone numbers
     return [
       {
         id: 'ORD-1001',
-        user: { name: 'John Doe', email: 'john@example.com' },
-        items: [{ name: 'The Solitaire Ring', quantity: 1, price: 2400 }],
+        user: { name: 'Eleanor Vance', email: 'eleanor.vance@luxury.com' },
+        items: [{ name: 'The Solitaire Ring', quantity: 1, price: 2400, image: '/assets/product_ring.jpg' }],
         total: 2400,
-        address: { name: 'John Doe', street: '123 Main St', city: 'New York', zip: '10001' },
+        address: {
+          name: 'Eleanor Vance',
+          phone: '9876543210',
+          countryCode: '+91',
+          formattedPhone: '+91 98765 43210',
+          street: '123 Luxury Ave, Penthouse 4',
+          city: 'Mumbai',
+          zip: '400001'
+        },
         status: 'Processing',
         date: new Date(Date.now() - 86400000).toISOString()
       },
       {
         id: 'ORD-1002',
-        user: { name: 'Jane Smith', email: 'jane@example.com' },
-        items: [{ name: 'Pearl Drop Earrings', quantity: 2, price: 1200 }],
+        user: { name: 'Julian Hayes', email: 'julian@haute-paris.com' },
+        items: [{ name: 'Pearl Drop Earrings', quantity: 2, price: 1200, image: '/assets/product_earrings.jpg' }],
         total: 2400,
-        address: { name: 'Jane Smith', street: '456 Oak Ave', city: 'Los Angeles', zip: '90001' },
+        address: {
+          name: 'Julian Hayes',
+          phone: '9123456789',
+          countryCode: '+91',
+          formattedPhone: '+91 91234 56789',
+          street: '456 Fifth Avenue, Suite 10',
+          city: 'New Delhi',
+          zip: '110001'
+        },
         status: 'Shipped',
         date: new Date(Date.now() - 172800000).toISOString()
       }

@@ -6,12 +6,23 @@
 
 .main-content {
   flex: 1;
-  padding-top: 75px;
+  padding-top: 0;
+}
+
+/* Ensure non-hero subpages clear the floating pill navbar */
+.product-details-page,
+.checkout-page-layout,
+.cart-page-content,
+.admin-page-layout {
+  padding-top: 5.5rem !important;
 }
 
 @media (max-width: 768px) {
-  .main-content {
-    padding-top: 62px;
+  .product-details-page,
+  .checkout-page-layout,
+  .cart-page-content,
+  .admin-page-layout {
+    padding-top: 4.8rem !important;
   }
 }
 
