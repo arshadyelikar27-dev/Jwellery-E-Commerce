@@ -31,7 +31,7 @@ const ProductDetails = () => {
           <img src={product.image} alt={product.name} style={{ width: '100%', height: 'auto', objectFit: 'cover' }} />
         </div>
         <div style={{ display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
-          <h1 style={{ fontSize: '2.5rem', marginBottom: '1rem' }}>{product.name}</h1>
+          <h1 style={{ marginBottom: '1rem' }}>{product.name}</h1>
           <p style={{ fontSize: '1.5rem', color: 'var(--color-text-muted)', marginBottom: '1.5rem' }}>${product.price.toLocaleString()}</p>
         
         <p style={{ marginBottom: '1.5rem', lineHeight: '1.6' }}>{product.description}</p>

@@ -103,12 +103,12 @@ button {
     padding: 0 1rem;
   }
   
-  h1 { font-size: 2rem; }
-  h2 { font-size: 1.75rem; }
-  h3 { font-size: 1.5rem; }
+  h1 { font-size: 1.75rem !important; }
+  h2 { font-size: 1.5rem !important; }
+  h3 { font-size: 1.25rem !important; }
   
-  .py-8 { padding: 4rem 0; }
-  .py-4 { padding: 2rem 0; }
+  .py-8 { padding: 3rem 0; }
+  .py-4 { padding: 1.5rem 0; }
 }
 
 /* Responsive Flex Layouts */
@@ -126,6 +126,10 @@ button {
 @media (max-width: 768px) {
   .responsive-flex {
     gap: 1.5rem;
+  }
+  .responsive-flex > div:first-child img {
+    max-height: 400px;
+    object-fit: cover !important;
   }
 }
 
