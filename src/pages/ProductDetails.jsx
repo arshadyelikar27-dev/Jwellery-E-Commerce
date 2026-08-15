@@ -111,10 +111,6 @@ const ProductDetails = () => {
         {/* Right Column: Product Details & Purchase Actions */}
         <div className="product-details-column">
           <div className="product-header-info">
-            <div className="eyebrow-row">
-              <span className="luxury-badge">Fine Jewelry</span>
-              <span className="hallmark-tag">18K Pure Gold</span>
-            </div>
 
             <h1 className="details-title">{product.name}</h1>
             <div className="details-price-row">

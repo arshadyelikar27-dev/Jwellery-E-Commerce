@@ -163,7 +163,6 @@ const ProductGrid = () => {
                 {/* Card Info */}
                 <div className="product-info-block">
                   <div className="product-meta-row">
-                    <span className="product-category-sub">Fine Jewelry</span>
                     <span className="stock-indicator">
                       <span className="stock-dot" /> In Stock
                     </span>
@@ -219,7 +218,6 @@ const ProductGrid = () => {
                   />
                 </div>
                 <div className="quickview-info-col">
-                  <span className="luxury-badge">Handcrafted Fine Jewelry</span>
                   <h2>{quickViewProduct.name}</h2>
                   <div className="quickview-price">₹{quickViewProduct.price.toLocaleString('en-IN')}</div>
                   <p className="quickview-desc">{quickViewProduct.description}</p>
